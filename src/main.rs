@@ -7,9 +7,10 @@ fn main() {
     for dir in directories {
         let dir = dir.unwrap();
         let dir_name = dir.file_name();
-        if dir_name.to_str().unwrap().ends_with(".Cons") {
+        let dir_unwrapped = dir_name.to_str().unwrap();
+        if dir_unwrapped.ends_with(".Cons") {
             Command::new("dotnet")
-                .arg("run")
+                .arg("watch")
                 .current_dir(dir.path())
                 .spawn()
                 .expect("failed to execute process");
